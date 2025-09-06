@@ -4,10 +4,10 @@ import { HiOutlineMailOpen } from "react-icons/hi";
 import { PiAddressBookLight } from 'react-icons/pi';
 import { BsTelephone } from 'react-icons/bs';
 
-const Information = () => {
+const Information = ({ numbers }) => {
   return (
     <div className='relative mt-10 top-16 z-50 mx-5 lg:mx-0'>
-      <div style={{ backgroundImage: `url(${backgroundDesign})`}} className='absolute inset-0 z-0 rounded'></div>
+      <div style={{ backgroundImage: `url(${backgroundDesign})` }} className='absolute inset-0 z-0 rounded'></div>
       <div className='relative z-10 max-w-6xl mx-auto px-5 py-12 md:grid grid-cols-12 gap-5'>
 
         {/* ---------------------Contact Info start------------------------ */}
@@ -16,9 +16,9 @@ const Information = () => {
           <hr />
 
           {/*EMAIL */}
-          <div className='flex gap-2 mt-4'>
+          <div className='flex gap-2 mt-4 whitespace-normal break-all'>
             <div className=''><HiOutlineMailOpen className='text-[#005842] text-3xl' /></div>
-            <div>
+            <div className=''>
               <p className='font-bold'>E-MAIL</p>
               <p className='font-medium'>FaithBridgeAcademy24@gmail.com</p>
             </div>
@@ -38,51 +38,16 @@ const Information = () => {
           <h1 className='heading text-3xl font-bold text-[#005842] pb-2 mt-5 text-center'>Contact (Office)</h1>
           <hr />
           <div className='flex flex-wrap gap-4'>
-            <div className='flex gap-2 mt-4'>
+            {
+              numbers.map(number =>  <div key={number?._id} className='flex gap-2 mt-4'>
               <div className=''><BsTelephone className='text-[#005842] text-3xl' /></div>
 
-              <p className='font-bold'>+8801550-706095</p>
-            </div>
-            <div className='flex gap-2 mt-4'>
-              <div className=''><BsTelephone className='text-[#005842] text-3xl' /></div>
+              <p className='font-bold'>{number?.contact_number}</p>
+            </div>)
+            }
+           
 
-              <p className='font-bold'>+8801550-706095</p>
-            </div>
-            <div className='flex gap-2 mt-4'>
-              <div className=''><BsTelephone className='text-[#005842] text-3xl' /></div>
 
-              <p className='font-bold'>+8801550-706095</p>
-            </div>
-            <div className='flex gap-2 mt-4'>
-              <div className=''><BsTelephone className='text-[#005842] text-3xl' /></div>
-
-              <p className='font-bold'>+8801550-706095</p>
-            </div>
-            <div className='flex gap-2 mt-4'>
-              <div className=''><BsTelephone className='text-[#005842] text-3xl' /></div>
-
-              <p className='font-bold'>+8801550-706095</p>
-            </div>
-            <div className='flex gap-2 mt-4'>
-              <div className=''><BsTelephone className='text-[#005842] text-3xl' /></div>
-
-              <p className='font-bold'>+8801550-706095</p>
-            </div>
-            <div className='flex gap-2 mt-4'>
-              <div className=''><BsTelephone className='text-[#005842] text-3xl' /></div>
-
-              <p className='font-bold'>+8801550-706095</p>
-            </div>
-            <div className='flex gap-2 mt-4'>
-              <div className=''><BsTelephone className='text-[#005842] text-3xl' /></div>
-
-              <p className='font-bold'>+8801550-706095</p>
-            </div>
-            <div className='flex gap-2 mt-4'>
-              <div className=''><BsTelephone className='text-[#005842] text-3xl' /></div>
-
-              <p className='font-bold'>+8801550-706095</p>
-            </div>
           </div>
         </div>
         {/* ---------------------Contact Info end------------------------ */}
@@ -93,18 +58,18 @@ const Information = () => {
           <hr className='mb-7' />
 
           <div>
-            <a className='bg-gray-100 px-6 py-3 border border-gray-700 rounded button-text hover:text-white hover:bg-[#005842]' href="https://dhakaeducationboard.gov.bd/site" target="_blank" rel="noopener noreferrer">Dhaka Education Board</a>
+            <a className='bg-gray-100 w-full block text-center py-3 border border-gray-700 rounded button-text hover:text-white hover:bg-[#005842]' href="https://dhakaeducationboard.gov.bd/site" target="_blank" rel="noopener noreferrer">Dhaka Education Board</a>
           </div>
           <div className='mt-9'>
-            <a className='bg-gray-100 px-[67px] py-3 border border-gray-700 rounded button-text hover:text-white hover:bg-[#005842] ' href="https://teachers.gov.bd" target="_blank" rel="noopener noreferrer">শিক্ষক বাতায়ন</a>
+            <a className='bg-gray-100 w-full block text-center py-3 border border-gray-700 rounded button-text hover:text-white hover:bg-[#005842] ' href="https://teachers.gov.bd" target="_blank" rel="noopener noreferrer">শিক্ষক বাতায়ন</a>
           </div>
           <div className='mt-9'>
-            <a className='bg-gray-100 px-[35px] py-3 border border-gray-700 rounded button-text hover:text-white hover:bg-[#005842] ' href="https://moedu.portal.gov.bd" target="_blank" rel="noopener noreferrer">Ministry of Education</a>
+            <a className='bg-gray-100 w-full block text-center py-3 border border-gray-700 rounded button-text hover:text-white hover:bg-[#005842] ' href="https://moedu.portal.gov.bd" target="_blank" rel="noopener noreferrer">Ministry of Education</a>
           </div>
           <div className='mt-9'>
-            <a className='bg-gray-100 px-[35px] py-3 border border-gray-700 rounded button-text hover:text-white hover:bg-[#005842] ' href="https://www.dpe.gov.bd" target="_blank" rel="noopener noreferrer">প্রাথমিক শিক্ষা অধিদপ্তর</a>
+            <a className='bg-gray-100 w-full block text-center py-3 border border-gray-700 rounded button-text hover:text-white hover:bg-[#005842] ' href="https://www.dpe.gov.bd" target="_blank" rel="noopener noreferrer">প্রাথমিক শিক্ষা অধিদপ্তর</a>
           </div>
-          
+
         </div>
 
         {/* Google Map */}

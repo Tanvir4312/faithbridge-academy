@@ -1,11 +1,11 @@
 import React from 'react'
 import StudentSidebar from './StudentSidebar/StudentSidebar'
 
-const StudentDashboard = () => {
+const StudentDashboard = ({role}) => {
     return (
-        <div className='min-h-screen bg-[#006F5C]'>
+        <div>
             {/* Student Sidebar */}
-            <StudentSidebar></StudentSidebar>
+            <StudentSidebar role={role}></StudentSidebar>
         </div>
     )
 }

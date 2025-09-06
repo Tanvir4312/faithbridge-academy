@@ -2,23 +2,48 @@ import React from 'react'
 import useAuth from '../../../hooks/useAuth'
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
 
-const SslPayment = () => {
+const SslPayment = ({ text }) => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
+
+    // --------------------- Payment Type Map -----------------------
+    const paymentTypeMap = {
+        'form-fill-up': 'form-fill-up',
+        'transcript': 'transcript',
+        'certificate': 'certificate',
+        'testimonial': 'testimonial',
+        'admission': 'admission'
+    };
+
+    const paymentType = paymentTypeMap[text];
+
+    // -------------------- Dynamic Amount --------------------------
+    const amountMap = {
+        'form-fill-up': 1100,
+        'transcript': 800,
+        'testimonial': 500,
+        'certificate': 1200,
+        'admission': 600
+    };
+    const amount = amountMap[text];
+
+
     const paymentInfo = {
+
         name: user?.displayName,
         email: user?.email,
-        amount: 300,
+        amount: amount,
         transactionId: '',
         date: new Date(),
-        status: 'pending'
+        status: 'pending',
+        paymentType: paymentType
     }
 
     const handleConfirmPayment = async () => {
         const res = await axiosSecure.post('/create-payment', paymentInfo)
-      
 
-        if(res.data?.gateWayUrl){
+
+        if (res.data?.gateWayUrl) {
             window.location.replace(res.data?.gateWayUrl)
         }
     }

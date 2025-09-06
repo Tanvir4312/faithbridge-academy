@@ -13,12 +13,11 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import backgroundDesign from '../../../assets/background-design.jpeg'
-import backgroundDesign1 from '../../../assets/navbar-logo.jpg'
+
 import ImagesSwiper from './ImagesSwiper/ImagesSwiper';
 
 
-const Images = () => {
+const Images = ({ moreImage }) => {
     return (
         <div className='mt-20'>
 
@@ -49,21 +48,12 @@ const Images = () => {
                 }}
             >
 
-                <SwiperSlide>
-                    <ImagesSwiper image={backgroundDesign}></ImagesSwiper>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ImagesSwiper image={backgroundDesign1}></ImagesSwiper>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ImagesSwiper image={backgroundDesign}></ImagesSwiper>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ImagesSwiper image={backgroundDesign1}></ImagesSwiper>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ImagesSwiper image={backgroundDesign}></ImagesSwiper>
-                </SwiperSlide>
+                {moreImage.map(image => <SwiperSlide>
+                    <ImagesSwiper
+                        key={image?._id}
+                        image={image}></ImagesSwiper>
+                </SwiperSlide>)
+                }
 
 
 

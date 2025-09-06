@@ -3,10 +3,6 @@ import React, { useState } from 'react'
 const WelcomeMessage = () => {
     const [showFull, setShowFull] = useState(false)
 
-    const handleShowButton = () => {
-        setShowFull(!showFull)
-    }
-
     const fullText = `Welcome to FaithBridge International Academy, where education is more than books, and learning is more than exams. Here, we believe in nurturing hearts along with minds — building students who not only excel in academics but also in character, discipline, and faith.
 
                 At FaithBridge, we envision a generation that leads with integrity and purpose — where Islamic values are not separate from worldly knowledge, but rather the foundation upon which wisdom is built. We are a co-educational, English-medium institution that offers a dual curriculum integrating Islamic education with modern general subjects. This ensures our students are prepared both for this life and the hereafter.
@@ -37,10 +33,10 @@ const WelcomeMessage = () => {
                 <h4 className='text-xl font-bold heading'>BISMILLAHIR RAHMANIR RAHEEM</h4>
                 <p className='text-justify leading-relaxed body mt-7'>
                     {showFull ? fullText : halfText}
-                    
+
                 </p>
             </div>
-            <button onClick={handleShowButton} className='btn btn-outline mt-7 hover:bg-[#007B5E] hover:text-white'>{showFull ? 'Show Less' : 'Read More'}</button>
+            <button onClick={() => setShowFull(!showFull)} className='btn btn-outline mt-7 hover:bg-[#007B5E] hover:text-white'>{showFull ? 'Show Less' : 'Read More'}</button>
         </div>
     )
 }

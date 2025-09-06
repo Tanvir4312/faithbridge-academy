@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import SslPayment from './SslPayment/SslPayment'
+import { useSearchParams } from 'react-router-dom'
 
 const ApplyPayment = () => {
     const [click, setClick] = useState(true)
+    const [searchParams] = useSearchParams()
 
+    const text = searchParams.get('text')
+
+// console.log(text)
     const handleStripe = () => {
         setClick(false)
     }
@@ -11,7 +16,7 @@ const ApplyPayment = () => {
     const handleSsl = () => {
         setClick(true)
     }
-    console.log(click)
+
     return (
         <div>
             <h1 className='text-3xl font-bold text-center my-5'> Please Payment</h1>
@@ -26,7 +31,7 @@ const ApplyPayment = () => {
                         handleSsl()
                     }
                 }} className="select">
- <option disabled={true}>Payment Method</option>
+                    <option disabled={true}>Payment Method</option>
                     <option value={'STRIPE'}>STRIPE</option>
                     <option value={'SSLCOMMERZ'}>SSLCOMMERZ</option>
 
@@ -34,7 +39,7 @@ const ApplyPayment = () => {
 
                 <div className='mt-10'>
                     {
-                        click ? <SslPayment></SslPayment> : <p>Stripe</p>
+                        click ? <SslPayment text={text}></SslPayment> : <p>Stripe</p>
                     }
                 </div>
             </div>

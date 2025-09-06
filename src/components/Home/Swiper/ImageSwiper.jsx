@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRef} from 'react';
+import { useRef } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -13,19 +13,14 @@ import './imageSwiper.css';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-import backgroundDesign from '../../../assets/background-design.jpeg'
-import backgroundDesign1 from '../../../assets/navbar-logo.jpg'
-
-
-
-
-const ImageSwiper = () => {
-    const progressCircle = useRef(null);
+const ImageSwiper = ({ images }) => {
+  const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty('--progress', 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
+
   return (
     <div>
       <Swiper
@@ -43,12 +38,13 @@ const ImageSwiper = () => {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper rounded h-full"
       >
-        <SwiperSlide className='h-full'><img className='h-full w-full object-cover' src={backgroundDesign} alt="" /></SwiperSlide>
-        <SwiperSlide className='h-full'><img className='h-full w-full object-cover' src={backgroundDesign1} alt="" /></SwiperSlide>
-      
-      
+        {
+          images.map(image => <SwiperSlide
+            key={image?._id}
+            className='h-full'
+          ><img className='h-full w-full object-cover' src={image?.image} alt="" /></SwiperSlide>)
+        }
 
-        
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>

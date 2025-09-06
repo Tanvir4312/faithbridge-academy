@@ -15,53 +15,56 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import CoursesSlide from './CoursesSlide/CoursesSlide';
 
 
-const Courses = () => {
+const Courses = ({ courses }) => {
+  
     return (
         <div className='my-10 mx-5'>
-           
-                <h1 className='text-5xl heading font-bold text-center text-[#007B5E]'>Our Courses For Students</h1>
 
-                <Swiper
+            <h1 className='text-5xl heading font-bold text-center text-[#007B5E]'>Our Courses For Students</h1>
 
-                    slidesPerView={3}
-                    centeredSlides={false}
-                    spaceBetween={30}
-                    autoplay={{
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    }}
-                  
-                    navigation={true}
-                    modules={[Autoplay, Pagination, Navigation]}
-                    className="mySwiper"
-                    breakpoints={{
-                        0: {
-                            slidesPerView: 1,
-                        },
-                        640: {
-                            slidesPerView: 2,
-                        },
-                        1024: {
-                            slidesPerView: 3,
-                        },
-                    }}
-                >
-               
-                     <SwiperSlide><CoursesSlide></CoursesSlide></SwiperSlide>
-                  
-                    <SwiperSlide><CoursesSlide></CoursesSlide></SwiperSlide>
-                    <SwiperSlide><CoursesSlide></CoursesSlide></SwiperSlide>
-                    <SwiperSlide><CoursesSlide></CoursesSlide></SwiperSlide>
-                    <SwiperSlide><CoursesSlide></CoursesSlide></SwiperSlide>
-                    <SwiperSlide><CoursesSlide></CoursesSlide></SwiperSlide>
-                    <SwiperSlide><CoursesSlide></CoursesSlide></SwiperSlide>
-                  
-                </Swiper>
+            <Swiper
+
+                slidesPerView={3}
+                centeredSlides={false}
+                spaceBetween={30}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+                breakpoints={{
+                    0: {
+                        slidesPerView: 1,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                }}
+            >
+                {
+                    courses.map(course => <SwiperSlide>
+                        <CoursesSlide
+                            key={course._id}
+                            course={course}
+                        ></CoursesSlide>
+                    </SwiperSlide>)
+                }
 
 
-            </div>
-           
-     
+
+
+            </Swiper>
+
+
+        </div>
+
+
     )
 }
 

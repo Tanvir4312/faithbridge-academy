@@ -8,9 +8,9 @@ const OnlineAdmission = () => {
         window.open('../../../public/filepdf.pdf', "_blank")
     }
     const link = <>
-        <Link to={'/'}><li className='text-lg font-bold text-white'><button><img className='w-6' src="https://img.icons8.com/?size=100&id=24629&format=png" alt="" /> Home</button></li></Link>
+        <Link to={'/'}><li className='text-lg font-bold md:text-white'><button><img className='w-6' src="https://img.icons8.com/?size=100&id=24629&format=png" alt="" /> Home</button></li></Link>
 
-        <Link to={'/login'}><li className='text-lg font-bold text-white'><button><img className='w-6' src="https://img.icons8.com/?size=100&id=94&format=png" alt="" /> Login</button></li></Link>
+        <Link to={'/login'}><li className='text-lg font-bold md:text-white'><button><img className='w-6' src="https://img.icons8.com/?size=100&id=94&format=png" alt="" /> Login</button></li></Link>
     </>
     return (
         <div>

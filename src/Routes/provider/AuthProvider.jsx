@@ -1,11 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+
 import app from '../../firebase/firebase.config';
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null)
 const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
+
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
     // Update profile
-    const profileUpdate = (displayName, photoURL) =>{
+    const profileUpdate = (displayName, photoURL) => {
         setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName,
@@ -26,37 +26,33 @@ const AuthProvider = ({ children }) => {
     }
 
     // Student Login
-    const studentLogin = (email, password) =>{
+    const studentLogin = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-    // Login with google
-    const loginWithGoogle = () =>{
-        setLoading(true)
-        return signInWithPopup(auth, googleProvider)
-    }
+
 
     // Logout
-    const logout = () =>{
+    const logout = () => {
         setLoading(true)
         return signOut(auth)
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            setLoading(false)
             setUser(currentUser)
+            setLoading(false)
         })
         return () => unSubscribe()
     }, [])
-console.log(user)
+    console.log(user)
     const authInfo = {
         user,
         loading,
         userCreate,
-        profileUpdate, 
+        profileUpdate,
         studentLogin,
-        loginWithGoogle,
+
         logout
     }
     return (

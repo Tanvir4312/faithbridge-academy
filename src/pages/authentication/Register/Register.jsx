@@ -14,7 +14,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Register = () => {
     const axiosPublic = useAxiosPublic()
     const { register, handleSubmit } = useForm()
-    const { userCreate, profileUpdate, loginWithGoogle } = useAuth()
+    const { userCreate, profileUpdate } = useAuth()
     const navigate = useNavigate()
     const onSubmit = async (data) => {
 
@@ -24,9 +24,11 @@ const Register = () => {
         const name = data?.name
 
 
-        const imageFile = { image: data.image[0] }
-       
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+
+        const formData = new FormData()
+        formData.append("image", data.image[0])
+
+        const res = await axiosPublic.post(image_hosting_api, formData, {
             headers: { 'content-type': 'multipart/form-data' }
         })
         const image = res.data.data.display_url
@@ -39,45 +41,25 @@ const Register = () => {
             await profileUpdate(name, image)
 
 
-            // get user info for the database
+            // post user info
             const userInfo = {
 
                 name,
                 email,
-                role: 'student',
-                paymentVerified: false,
-                status: 'pending',
+                role: 'user',
+
 
             }
 
-            await axiosPublic.post(`/user/${email}`, userInfo)
+            await axiosPublic.post("/user", userInfo)
             toast.success('Signup successfully')
-            // navigate('/')
+            navigate('/')
         } catch (err) {
             toast.error(err)
         }
 
     }
 
-    const handleLoginWithGoogleBtn = () => {
-        loginWithGoogle()
-            .then(result => {
-                const userInfo = {
-                    email: result?.user?.email,
-                    name: result?.user?.displayName,
-                    role: 'student',
-                    paymentVerified: false,
-                    status: 'pending',
-
-                };
-                axiosPublic.post(`/user/${result?.user?.email}`, userInfo)
-                toast.success('Signup successfully')
-                navigate('/')
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
 
 
     return (
@@ -92,13 +74,7 @@ const Register = () => {
                 {/* input field */}
                 <div className='md:max-w-2xl mx-auto max-w-64'>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* student id */}
-                        {/* <input
-                            type="text"
-                            {...register("id")}
 
-                            placeholder="ID Number"
-                            className="input w-full" /> */}
 
                         {/* Name */}
                         <label className="input validator w-full mt-4">
@@ -120,10 +96,7 @@ const Register = () => {
 
                                 required
                                 placeholder="Username"
-                                pattern="[A-Za-z][A-Za-z0-9\-]*"
-                                minLength="3"
-                                maxLength="30"
-                                title="Only letters, numbers or dash"
+
                             />
                         </label>
                         <p className="validator-hint">
@@ -153,6 +126,7 @@ const Register = () => {
                                 required />
                         </label>
                         <div className="validator-hint hidden">Enter valid email address</div>
+                        <p className="text-red-500 text-sm mt-1"> ⚠️ Please enter your valid email address carefully. Once registered, this email cannot be changed. </p>
 
                         {/* password */}
                         <label className="input validator w-full mt-4">
@@ -198,17 +172,10 @@ const Register = () => {
                         {/* button */}
                         <button className='btn btn-block btn-outline mt-5 hover:bg-blue-500 hover:text-white button-text'>Register</button>
 
-                        {/* Login with google Button*/}
-                        <div onClick={handleLoginWithGoogleBtn}>
-                            <AuthenticationWithGoogle></AuthenticationWithGoogle>
-                        </div>
                         <div className=''>
                             <p>Already account? Please <span className='underline text-blue-500'><Link to={'/login'}>Login</Link></span></p>
                         </div>
                     </form>
-                    {/* <div className=''>
-                        <p>Already account? Please <span className='underline text-blue-500'><Link to={'/teachers-login'}>Teachers Login</Link></span></p>
-                    </div> */}
 
                 </div>
             </div>

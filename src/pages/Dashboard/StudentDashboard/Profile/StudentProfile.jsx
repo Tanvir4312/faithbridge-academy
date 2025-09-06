@@ -1,35 +1,35 @@
-import React from 'react'
-import useAuth from '../../../../hooks/useAuth'
-import useAxiosSecure from '../../../../hooks/useAxiosSecure'
+import useFormFillUpInfo from '../../../../hooks/useFormFillUpInfo'
+import useRole from '../../../../hooks/useRole'
+import useStudentInfo from '../../../../hooks/useStudentInfo'
 
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
 
 const StudentProfile = () => {
-  const { user } = useAuth()
-  const [userInfo, setUserInfo] = useState('')
-  const axiosSecure = useAxiosSecure()
 
-
-
-
-  useEffect(() => {
-    axiosSecure.get(`/user/${user?.email}`)
-      .then(res => {
-        setUserInfo(res.data)
-      })
-  }, [axiosSecure, user?.email])
-
+  const studentInfo = useStudentInfo()
+  const formFillUpData = useFormFillUpInfo()
+  const [role] = useRole()
 
   return (
-    <div className='text-center pt-20 lg:max-w-2xl md:max-w-96 max-w-40 mx-auto mt-20 pb-10 rounded-2xl bg-[#bdf9eb]'>
-      <h1 className='px-2'><span className='md:text-2xl font-bold'>Role:</span> <span className='md:text-3xl text-lg font-bold bg-[#006F5C] text-white md:px-4 py-2 px-2  rounded'>{userInfo?.role}</span></h1>
-      <div className='flex justify-center items-center mt-10'>
+    <div>
+      <div className='m-5'>
+        <Link to={'/view-profile'}><button className='btn mr-6 mb-4 md:mb-0 font-bold'>View Profile</button></Link>
         {
-          user.photoURL && <img referrerPolicy='no-referrer' className='md:w-44 rounded-bl-4xl rounded-tr-4xl' src={user?.photoURL} alt="" />
+          studentInfo?.registration_no === formFillUpData?.registration_no ? <Link to={'/form-fillUp-info'}><button className='btn font-bold'>Form fill up</button></Link> : <Link to={'/form-fill-up'}><button className='btn font-bold'>Form fill up</button></Link>
+
         }
       </div>
-      <p className='mt-6'><span className='text-3xl font-bold'>Monthly Fee:</span> {!userInfo?.paymentVerified ? <span className='text-red-600 text-2xl font-medium '>Due</span>: <span className='text-green-600 text-2xl font-medium '>Done</span>}</p>
+      <div className='text-center pt-20 lg:max-w-2xl md:max-w-96 max-w-40 mx-auto mt-10 pb-10 rounded-2xl bg-[#bdf9eb]'>
+        <h1 className='px-2'><span className='md:text-2xl font-bold'></span> <span className='md:text-3xl text-lg font-bold bg-[#006F5C] text-white md:px-4 py-2 px-2  rounded'>{role}</span></h1>
+        <div className='flex justify-center items-center mt-10'>
+          {
+            studentInfo?.profile_image && <img referrerPolicy='no-referrer' className='md:w-44 rounded-bl-4xl rounded-tr-4xl' src={studentInfo?.profile_image} alt="" />
+          }
+        </div>
+
+      </div>
+
     </div>
   )
 }

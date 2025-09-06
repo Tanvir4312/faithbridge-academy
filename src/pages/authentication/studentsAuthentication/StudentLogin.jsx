@@ -4,12 +4,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import AuthenticationWithGoogle from '../Shared/AuthenticationWithGoogle/AuthenticationWithGoogle'
 import useAuth from '../../../hooks/useAuth'
 import { toast } from 'react-toastify'
-import useAxiosPublic from '../../../hooks/useAxiosPublic'
+
 
 const StudentLogin = () => {
-    const { studentLogin, loginWithGoogle } = useAuth()
+    const { studentLogin} = useAuth()
     const navigate = useNavigate()
-    const axiosPublic = useAxiosPublic()
+ 
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
     const handleStudentLogin = async e => {
@@ -29,26 +29,7 @@ const StudentLogin = () => {
         }
     }
 
-    const handleLoginWithGoogleBtn = () => {
-        loginWithGoogle()
-            .then(result => {
-                const userInfo = {
-                    email: result?.user?.email,
-                    name: result?.user?.displayName,
-                    role: 'student',
-                    paymentVerified: false,
-                    status: 'pending',
-
-                };
-                axiosPublic.post(`/user/${result?.user?.email}`, userInfo)
-                toast.success('Signup successfully')
-                console.log(result.user)
-                navigate(from, {replace: true})
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
+   
     return (
         <div className='max-w-6xl mx-auto'>
             <div style={{ backgroundImage: `url(${studentLoginBg})`, opacity: 0.3, }} className='absolute inset-0 z-0'>
@@ -120,9 +101,7 @@ const StudentLogin = () => {
                         {/* button */}
                         <button className='btn btn-block btn-outline mt-5 hover:bg-blue-500 hover:text-white button-text'>Login</button>
                         {/* Login with google Button*/}
-                        <div onClick={handleLoginWithGoogleBtn}>
-                            <AuthenticationWithGoogle></AuthenticationWithGoogle>
-                        </div>
+                        
                         <div>
                             <p>New here? Please <span className='underline text-blue-500'><Link to={'/register'}>Register</Link></span></p>
                         </div>
