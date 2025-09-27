@@ -2,6 +2,7 @@
 
 import { Link } from 'react-router-dom';
 import useStudentInfo from '../../../../hooks/useStudentInfo';
+import Marquee from "react-fast-marquee";
 
 
 
@@ -11,20 +12,34 @@ const ApplicationStatus = () => {
 
     const applier = studentInfo
 
+
+
     return (
         <div>
-            <h1 className='text-3xl font-bold text-center py-4'>Your apply information</h1>
+            <h1 className='md:text-3xl font-bold text-center py-4'>Your apply information</h1>
             <hr />
-
+            <div className='mt-4'>
+                {studentInfo?.status_exam && (
+                    <Marquee>
+                        <span className='font-bold text-orange-500'>
+                            &nbsp;Congratulations! You have been selected for the admission exam.
+                        </span>&nbsp;
+                        Please keep an eye on the&nbsp;
+                        <span className='text-orange-500'>Notice Board</span>&nbsp;
+                        of our website for further updates regarding the examination.
+                    </Marquee>
+                )}
+            </div>
             {
                 applier ?
                     <div className='my-5 whitespace-normal break-words'>
-                        <div className='flex flex-row-reverse items-center justify-between '>
+
+                        <div className='md:flex flex-row-reverse items-center justify-between '>
                             <div className='text-center my-8'>
                                 <Link to={'/dashboard/apply-payment?text=admission'}><button disabled={applier.payment_status === 'Done'} className={`px-6 py-2 rounded-lg text-white font-semibold ${applier.payment_status === 'Done' ? 'cursor-not-allowed bg-[#a8a8a8] text-blue-100' : 'cursor-pointer bg-amber-500'}`}>Payment</button></Link>
                             </div>
-                            <div>
-                                <h2 className='text-3xl'>Admission Status:{studentInfo?.status === 'pending' && <span className='text-yellow-400 pl-2'>Pending</span>}{studentInfo?.status === 'rejected' && <span className='text-red-500 pl-2'>Rejected</span>}</h2>
+                            <div className='mb-4'>
+                               {studentInfo?.status_exam ? <h2 className='text-3xl'>Admission Status: <span className='text-green-600'>Accept For Admission Exam</span></h2> : <h2 className='text-3xl'>Admission Status:{studentInfo?.status === 'pending' && <span className='text-yellow-400 pl-2'>Pending</span>}{studentInfo?.status === 'rejected' && <span className='text-red-500 pl-2'>Rejected</span>}</h2>}
                             </div>
                         </div>
 
@@ -102,6 +117,7 @@ const ApplicationStatus = () => {
                                     <p><span className="text-lg font-medium">Session:</span>{applier.academic.jsc_or_jdc_session}</p>
                                     <p><span className="text-lg font-medium">Division/Class:</span>{applier.academic.jdc_or_jsc_exam_result}</p>
                                     <p><span className="text-lg font-medium">Year:</span>{applier.academic.jsc_or_jdc_exam_year}</p>
+                                    <p><span className="text-lg font-medium">Institute:</span>{applier.academic.jsc_or_jdc_Institute}</p>
 
                                     {/* ---------------------------- */}
 
@@ -120,6 +136,7 @@ const ApplicationStatus = () => {
                                     <p><span className="text-lg font-medium">Session:</span>{applier.academic.ssc_or_dakhil_session}</p>
                                     <p><span className="text-lg font-medium">Division/Class:</span>{applier.academic.ssc_or_dakhil_exam_result}</p>
                                     <p><span className="text-lg font-medium">Year:</span>{applier.academic.ssc_or_dakhil_exam_year}</p>
+                                    <p><span className="text-lg font-medium">Institute:</span>{applier.academic.ssc_or_dakhil_Institute}</p>
                                     {/* ---------------------------------- */}
 
                                 </div>

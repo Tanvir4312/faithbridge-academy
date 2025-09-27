@@ -90,6 +90,7 @@ const ApplyForm = () => {
             jsc_or_jdc_exam_board: "",
             jsc_or_jdc_exam_year: "",
             jdc_or_jsc_exam_result: "",
+            jsc_or_jdc_Institute: '',
             ssc_or_dakhil_exam: "",
             ssc_or_dakhil_exam_roll: "",
             ssc_or_dakhil_exam_reg_no: "",
@@ -97,6 +98,7 @@ const ApplyForm = () => {
             ssc_or_dakhil_board: "",
             ssc_or_dakhil_exam_year: "",
             ssc_or_dakhil_exam_result: "",
+            ssc_or_dakhil_Institute: '',
             previous_class: "",
             previous_class_final_exam_result: "",
         },
@@ -283,7 +285,7 @@ const ApplyForm = () => {
                                 <option value="Sylhet Board">Sylhet Board</option>
                             </select>
 
-                            <select defaultValue={'JDC,JSC Exam Year'} disabled={!['jsc', 'jdc'].includes(formData?.academic?.jdc_or_jsc_exam?.toLocaleLowerCase())} name="jsc_or_jdc_exam_year" data-parent="academic" className="select" onChange={handleChange}>
+                            <select required defaultValue={'JDC,JSC Exam Year'} disabled={!['jsc', 'jdc'].includes(formData?.academic?.jdc_or_jsc_exam?.toLocaleLowerCase())} name="jsc_or_jdc_exam_year" data-parent="academic" className="select" onChange={handleChange}>
                                 <option disabled={true}>JDC,JSC Exam Year</option>
                                 <option value="2023">2023</option>
                                 <option value="2022">2022</option>
@@ -291,6 +293,8 @@ const ApplyForm = () => {
                             </select>
 
                             <input disabled={!['jsc', 'jdc'].includes(formData?.academic?.jdc_or_jsc_exam?.toLocaleLowerCase())} type="text" name="jdc_or_jsc_exam_result" data-parent="academic" placeholder="JDC or JSC Exam Result**" className="input" required onChange={handleChange} />
+
+                            <input disabled={!['jsc', 'jdc'].includes(formData?.academic?.jdc_or_jsc_exam?.toLocaleLowerCase())} type="text" name="jsc_or_jdc_Institute" data-parent="academic" placeholder="jsc_or_jdc_Institute**" className="input" required onChange={handleChange} />
                             {/* --------------------------------Jsc Or Jdc Start------------------------------------------- */}
 
 
@@ -323,12 +327,14 @@ const ApplyForm = () => {
                                 <option value="Sylhet Board">Sylhet Board</option>
                             </select>
 
-                            <select disabled={!['ssc', 'dakhil'].includes(formData?.academic?.ssc_or_dakhil_exam?.toLocaleLowerCase())} defaultValue={'SSC, DAKHIL Exam Year'} name="ssc_or_dakhil_exam_year" data-parent="academic" className="select" onChange={handleChange}>
+                            <select required disabled={!['ssc', 'dakhil'].includes(formData?.academic?.ssc_or_dakhil_exam?.toLocaleLowerCase())} defaultValue={'SSC, DAKHIL Exam Year'} name="ssc_or_dakhil_exam_year" data-parent="academic" className="select" onChange={handleChange}>
                                 <option disabled={true}>SSC, DAKHIL Exam Year</option>
                                 <option value="2025">2025</option>
                             </select>
 
                             <input disabled={!['ssc', 'dakhil'].includes(formData?.academic?.ssc_or_dakhil_exam?.toLocaleLowerCase())} type="text" name="ssc_or_dakhil_exam_result" data-parent="academic" placeholder="SSC or DAKHIL Exam Result**" className="input" required onChange={handleChange} />
+
+                            <input disabled={!['ssc', 'dakhil'].includes(formData?.academic?.ssc_or_dakhil_exam?.toLocaleLowerCase())} type="text" name="ssc_or_dakhil_Institute" data-parent="academic" placeholder="ssc_or_dakhil_Institute**" className="input" required onChange={handleChange} />
 
 
                             {/* --------------------------------Ssc Or Dakhil End------------------------------------------- */}
@@ -344,14 +350,14 @@ const ApplyForm = () => {
                             {/* Admission Info */}
                             <input type="text" name="desired_class" data-parent="admission_info" placeholder="Desired Class**" required className="input" onChange={handleChange} />
 
-                            <select disabled={!['jsc', 'jdc'].includes(formData?.academic?.jdc_or_jsc_exam?.toLocaleLowerCase())} defaultValue={'Group'} name="group" data-parent="admission_info" className="select" onChange={handleChange}>
+                            <select required disabled={!['jsc', 'jdc'].includes(formData?.academic?.jdc_or_jsc_exam?.toLocaleLowerCase())} defaultValue={'Group'} name="group" data-parent="admission_info" className="select" onChange={handleChange}>
                                 <option disabled={true}>Group</option>
                                 <option value="Arts">Arts</option>
                                 <option value="Science">Science</option>
                                 <option value="Commerce">Commerce</option>
                             </select>
 
-                           <input type="text" name="year" data-parent="admission_info" placeholder="Year**" required className="input" onChange={handleChange} />
+                            <input type="text" name="year" data-parent="admission_info" placeholder="Year**" required className="input" onChange={handleChange} />
 
                             <select defaultValue={'Quota'} name="quota" data-parent="admission_info" className="select" onChange={handleChange}>
                                 <option disabled={true}>Quota</option>

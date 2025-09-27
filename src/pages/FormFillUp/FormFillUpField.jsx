@@ -18,6 +18,7 @@ const FormFillUpField = () => {
     const navigate = useNavigate()
     const captchaRef = useRef()
     const [disabled, setDisabled] = useState(true)
+    const [classValue, setClassValue] = useState(null)
 
 
     useEffect(() => {
@@ -26,10 +27,11 @@ const FormFillUpField = () => {
 
 
     const handleValidateCaptcha = () => {
-      
+
         const user_captcha_value = captchaRef.current.value;
 
         if (validateCaptcha(user_captcha_value) === false) {
+            captchaRef.current.value = ''
             return alert('Captcha Invalid')
         }
         if (validateCaptcha(user_captcha_value)) {
@@ -50,26 +52,59 @@ const FormFillUpField = () => {
         const examination_name = form.examination_name.value;
         const examination_year = form.examination_year.value;
         const class_level = form.class_level.value;
+        const group = form.group.value;
+        const name_bn = form.name_bn.value;
+        const name_en = form.name_en.value;
+        const father_name = form.father_name.value;
+        const mother_name = form.mother_name.value;
+
+
+        const desiredClass = (studentInfo?.admission_info?.desired_class);
+        const studentRoll = (studentInfo?.class_roll);
+        const studentGroup = studentInfo?.admission_info?.group;
+        const nameBangla = studentInfo?.name_bn;
+        const nameEnglish = studentInfo?.name_en;
+        const fatherName = studentInfo?.guardian?.father_name;
+        const MotherName = studentInfo?.guardian?.mother_name;
 
 
         if (reg_no !== studentInfo?.registration_no) {
+            setDisabled(true)
             return alert('Your Registration number invalid')
         }
-        if (class_level !== studentInfo?.admission_info?.desired_class || class_roll !== studentInfo?.class_roll) {
-            return alert('Your Information invalid')
+
+
+        if (
+            class_level !== desiredClass ||
+            class_roll !== studentRoll ||
+            name_bn !== nameBangla ||
+            name_en !== nameEnglish ||
+            father_name !== fatherName ||
+            mother_name !== MotherName ||
+            (studentGroup && group !== studentGroup)
+        ) {
+            setDisabled(true);
+            return alert('Your Information invalid');
         }
 
 
 
 
         const fomFillUpIfo = {
+            image: studentInfo?.profile_image,
+            signature: studentInfo?.signature_image,
 
             registration_no: reg_no,
+            name_bn,
+            name_en,
+            father_name,
+            mother_name,
             email: user?.email,
             class_roll,
             examination_name,
             examination_year,
             class: class_level,
+            group: group === 'Group' ? '' : group,
             payment: 'pending',
             status: 'pending'
         }
@@ -83,6 +118,7 @@ const FormFillUpField = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, Confirm Now!!"
+
         }).then(async (result) => {
             if (result.isConfirmed) {
 
@@ -113,6 +149,26 @@ const FormFillUpField = () => {
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">REG No**</legend>
                         <input required name='reg_no' type="text" className="input" placeholder="REG No" />
+                    </fieldset>
+                    {/* Name(Bangla) */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Name(Bangla)**</legend>
+                        <input required name='name_bn' type="text" className="input" placeholder="Name(Bangla)" />
+                    </fieldset>
+                    {/* Name(English) */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Name(English)**</legend>
+                        <input required name='name_en' type="text" className="input" placeholder="Name(English)" />
+                    </fieldset>
+                    {/* Father Name */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Father Name**</legend>
+                        <input required name='father_name' type="text" className="input" placeholder="Father Name" />
+                    </fieldset>
+                    {/* Mother Name*/}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Mother Name**</legend>
+                        <input required name='mother_name' type="text" className="input" placeholder="Mother Name" />
                     </fieldset>
 
                     {/* Class Roll */}
@@ -145,7 +201,7 @@ const FormFillUpField = () => {
                     {/* Class */}
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">Class**</legend>
-                        <select required name='class_level' defaultValue="Class" className="select">
+                        <select required name='class_level' defaultValue="Class" className="select" onChange={(e) => setClassValue(e.target.value)}>
                             <option disabled={true}>Class</option>
                             <option value={1}>Class - 1</option>
                             <option value={2}>Class - 2</option>
@@ -157,6 +213,18 @@ const FormFillUpField = () => {
                             <option value={8}>Class - 8</option>
                             <option value={9}>Class - 9</option>
                             <option value={10}>Class - 10</option>
+
+                        </select>
+                    </fieldset>
+                    {/* Group */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Group**</legend>
+                        <select disabled={!['9', '10', '11'].includes(classValue)} required name='group' defaultValue="Group" className="select">
+                            <option disabled={true}>Group</option>
+                            <option value={"Arts"}>Arts</option>
+                            <option value={'Science'}>Science</option>
+                            <option value={'Commerce'}>Commerce</option>
+
 
                         </select>
                     </fieldset>

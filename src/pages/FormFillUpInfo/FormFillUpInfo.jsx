@@ -12,7 +12,7 @@ const FormFillUpInfo = () => {
     const [loading, setLoading] = useState(true)
     const formFillUpInfo = useFormFillUpInfo()
 
-    const { class: student_class, class_roll, examination_name, examination_year, status, payment } = formFillUpInfo || {}
+    const { class: student_class, class_roll, examination_name, examination_year, status, payment, _id } = formFillUpInfo || {}
 
     console.log(formFillUpInfo)
 
@@ -21,7 +21,7 @@ const FormFillUpInfo = () => {
             return setLoading(false)
         }
     }, [formFillUpInfo])
-
+console.log(formFillUpInfo)
     return (
 
         <div>
@@ -65,7 +65,7 @@ const FormFillUpInfo = () => {
                                     <td className='border-r border-gray-300 w-1/12'>{examination_year}</td>
                                     {payment === 'pending' ? <td className='border-r border-gray-300 w-1/12'><Link to={'/dashboard/apply-payment?text=form-fill-up'}><button className='btn bg-[#b71f1f] text-white'>Payment</button></Link> </td> : <td className='border-r border-gray-300 w-1/12'><p className='text-green-500 font-bold'>Verified</p></td>}
                                     <td className='border-r border-gray-300 w-3/12'>{status === 'pending' ? <span className='text-red-500'>Waiting for authority clearance</span> : <span className='text-green-500'>Verified</span>}</td>
-                                    <td className='border-r border-gray-300 w-2/12'>{status === 'verified' && <button className='btn'>Admit Card</button>}</td>
+                                    <td className='border-r border-gray-300 w-2/12'>{status === 'verified' &&<Link to={`/admit-card/${_id}`}> <button className='btn'>Admit Card</button></Link>}</td>
 
                                 </tr>
 

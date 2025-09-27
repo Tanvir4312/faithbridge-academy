@@ -49,6 +49,10 @@ const ViewProfile = () => {
                             <td className="p-2 pl-10 md:pl-3 md:w-3/4">{studentInfo?.registration_no}</td>
                         </tr>
                         <tr className="border-b border-gray-300 flex flex-col md:table-row">
+                            <th className="md:text-right text-start md:pr-3 pl-5 md:pl-0 font-medium p-2 md:border-r md: border-r-gray-300 border-b border-b-gray-300 md:border-b-0 bg-[#e4f2f7] text-[#005473]">Name (English)</th>
+                            <td className="p-2 pl-10 md:pl-3">{studentInfo?.name_en}</td>
+                        </tr>
+                        <tr className="border-b border-gray-300 flex flex-col md:table-row">
                             <th className="md:text-right text-start md:pr-3 pl-5 md:pl-0 font-medium p-2 md:border-r md: border-r-gray-300 border-b border-b-gray-300 md:border-b-0 bg-[#e4f2f7] text-[#005473]">Name (বাংলা)</th>
                             <td className="p-2 pl-10 md:pl-3">{studentInfo?.name_bn}</td>
                         </tr>

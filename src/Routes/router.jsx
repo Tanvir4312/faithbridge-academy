@@ -53,6 +53,13 @@ import ViewMoreImage from "../pages/Dashboard/AdminDashboard/MoreImage/ViewMoreI
 import AddContactNumber from "../pages/Dashboard/AdminDashboard/ContactNumber/AddContactNumber/AddContactNumber";
 import ContactNumber from "../pages/Dashboard/AdminDashboard/ContactNumber/ContactNumber";
 import ViewContactNumber from "../pages/Dashboard/AdminDashboard/ContactNumber/ViewContactNumber/ViewContactNumber";
+import Manage from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/Manage";
+import Users from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/Users/Users";
+import AllUsers from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/Users/AllUsers/AllUsers";
+import StudentInfo from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/StudentInfo/StudentInfo";
+import AllStudentInfo from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/StudentInfo/AllStudentInfo/AllStudentInfo";
+import FormFillUpInfoAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/FormFillUpInfoAdmin/FormFillUpInfoAdmin";
+import AdmitCard from "../pages/FormFillUp/AdmitCard/AdmitCard";
 
 
 
@@ -141,6 +148,8 @@ const router = createBrowserRouter([
                         path: "admin-profile",
                         element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
                     },
+
+                    // Home Page Related action---------------------------
                     {
                         path: "home-page",
                         element: <AdminRoute><HomePage></HomePage></AdminRoute>
@@ -168,6 +177,20 @@ const router = createBrowserRouter([
                     {
                         path: "contact-number",
                         element: <AdminRoute><ContactNumber></ContactNumber></AdminRoute>
+                    },
+
+                    // Manage--------------------------------
+                    {
+                        path: "manage",
+                        element: <AdminRoute><Manage></Manage></AdminRoute>
+                    },
+                    {
+                        path: "users",
+                        element: <AdminRoute><Users></Users></AdminRoute>
+                    },
+                    {
+                        path: "student-info-admin",
+                        element: <AdminRoute><StudentInfo></StudentInfo></AdminRoute>
                     },
 
                     // -----------------------------Admin End-------------------------------------
@@ -240,7 +263,25 @@ const router = createBrowserRouter([
                 path: 'view-contact-number',
                 element: <AdminRoute><ViewContactNumber></ViewContactNumber></AdminRoute>
             },
+            // ---------------Users Related--------------------------
+            {
+                path: 'all-user',
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/users-data-count`)
 
+            },
+            // ---------------Students Info Related--------------------------
+            {
+                path: 'all-student-info-admin',
+                element: <AdminRoute><AllStudentInfo></AllStudentInfo></AdminRoute>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/students-data-count`)
+            },
+            // ---------------Students Form fill-up Info Related--------------------------
+            {
+                path: 'student-formFillUp-info-admin',
+                element: <AdminRoute><FormFillUpInfoAdmin></FormFillUpInfoAdmin></AdminRoute>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/form-fillUp-data-count`)
+            },
 
         ]
     },
@@ -292,6 +333,12 @@ const router = createBrowserRouter([
         path: 'success-payment',
         element: <PaymentSuccessPage></PaymentSuccessPage>
     },
+
+    // Admit Card
+    {
+        path: 'admit-card/:id',
+        element: <AdmitCard></AdmitCard>
+    }
 ]);
 export default router
 

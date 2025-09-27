@@ -23,10 +23,10 @@ const Register = () => {
         const password = data?.password
         const name = data?.name
 
-
+        const imageFile = data.image[0]
 
         const formData = new FormData()
-        formData.append("image", data.image[0])
+        formData.append("image", imageFile)
 
         const res = await axiosPublic.post(image_hosting_api, formData, {
             headers: { 'content-type': 'multipart/form-data' }

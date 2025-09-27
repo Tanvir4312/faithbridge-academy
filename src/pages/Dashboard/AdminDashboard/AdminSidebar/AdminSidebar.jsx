@@ -21,38 +21,9 @@ const AdminSidebar = () => {
                     <NavLink className={({ isActive }) => isActive ? 'bg-[#FFD54F] md:py-4 py-2 rounded text-[#333333] font-medium' : ''} to={'home-page'}><button className='lg:w-72 md:w-60 w-[117px] lg:text-3xl md:text-xl text-sm cursor-pointer'>Home_Page</button></NavLink>
                 </div>
                 <div>
-                    dsfjh
+                    <NavLink className={({ isActive }) => isActive ? 'bg-[#FFD54F] md:py-4 py-2 rounded text-[#333333] font-medium' : ''} to={'manage'}><button className='lg:w-72 md:w-60 w-[117px] lg:text-3xl md:text-xl text-sm cursor-pointer'>Manage</button></NavLink>
                 </div>
-                <div>
-                    dsfjh
-                </div>
-                <div>
-                    dsfjh
-                </div>
-                <div>
-                    dsfjh
-                </div>
-                <div>
-                    dsfjh
-                </div>
-                <div>
-                    dsfjh
-                </div>
-                <div>
-                    dsfjh
-                </div>
-                <div>
-                    dsfjh
-                </div>
-                <div>
-                    dsfjh
-                </div>
-                <div>
-                    dsfjh
-                </div>
-                <div>
-                    dsfjh
-                </div>
+            
             </div>
             <div className='flex flex-col items-center'>
                 <div className='divider '></div>
