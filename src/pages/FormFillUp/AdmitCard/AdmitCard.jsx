@@ -5,8 +5,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import { useState } from 'react'
 import logo2 from '../../../assets/logo2.jpg'
 import examinerSignature from '../../../assets/signature.png'
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+
 
 const AdmitCard = () => {
     const { id } = useParams()
@@ -25,18 +24,6 @@ const AdmitCard = () => {
     const { name_en, name_bn, class_roll, class: student_class, examination_name, father_name, mother_name, examination_year, registration_no, group, image, signature } = admitCardData || {}
 
 
-     const downloadPDF = () => {
-        const admitCard = document.getElementById('admit-card');
-        html2canvas(admitCard).then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const imgProps = pdf.getImageProperties(imgData);
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-            pdf.save('admit-card.pdf');
-        });
-    };
     return (
         <div id="admit-card" className="p-6 max-w-6xl mx-auto">
             <div className='flex items-center justify-between'>
