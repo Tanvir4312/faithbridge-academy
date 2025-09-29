@@ -121,7 +121,7 @@ const AllUsers = () => {
         const { data } = await axiosSecure.get(`/users-search?search=${value}`)
         setUsers(data)
     }
-    console.log(count)
+   
     return (
         <div className='max-w-6xl mx-auto'>
             <h2 className='text-3xl font-bold text-center my-5'>All User</h2>

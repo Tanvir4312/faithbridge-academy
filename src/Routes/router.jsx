@@ -60,6 +60,14 @@ import StudentInfo from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/S
 import AllStudentInfo from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/StudentInfo/AllStudentInfo/AllStudentInfo";
 import FormFillUpInfoAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/FormFillUpInfoAdmin/FormFillUpInfoAdmin";
 import AdmitCard from "../pages/FormFillUp/AdmitCard/AdmitCard";
+import FormFillUpTime from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/FormFillUpInfoAdmin/FormFillUpTime/FormFillUpTime";
+import ApplicationTimeControl from "../pages/Dashboard/AdminDashboard/AdminSidebar/Manage/ApplicationTimeControl/ApplicationTimeControl";
+import Payments from "../pages/Dashboard/AdminDashboard/AdminSidebar/Payments/Payments";
+import AllPayment from "../pages/Dashboard/AdminDashboard/AdminSidebar/Payments/AllPayment/AllPayment";
+import AcademicDocs from "../pages/Dashboard/AdminDashboard/AdminSidebar/AcademicDocs/AcademicDocs";
+import AllTranscriptAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/AcademicDocs/AllTranscriptAdmin/AllTranscriptAdmin";
+import AllTestimonialAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/AcademicDocs/AllTestimonialAdmin/AllTestimonialAdmin";
+import AllCertificateAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/AcademicDocs/AllCertificateAdmin/AllCertificateAdmin";
 
 
 
@@ -149,7 +157,7 @@ const router = createBrowserRouter([
                         element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
                     },
 
-                    // Home Page Related action---------------------------
+                    // Home Page Related action Start---------------------------
                     {
                         path: "home-page",
                         element: <AdminRoute><HomePage></HomePage></AdminRoute>
@@ -178,8 +186,9 @@ const router = createBrowserRouter([
                         path: "contact-number",
                         element: <AdminRoute><ContactNumber></ContactNumber></AdminRoute>
                     },
+                    // Home Page Related action End---------------------------
 
-                    // Manage--------------------------------
+                    // Manage Start--------------------------------
                     {
                         path: "manage",
                         element: <AdminRoute><Manage></Manage></AdminRoute>
@@ -192,6 +201,21 @@ const router = createBrowserRouter([
                         path: "student-info-admin",
                         element: <AdminRoute><StudentInfo></StudentInfo></AdminRoute>
                     },
+                    // Manage End--------------------------------
+
+                    // Payment Start---------------------------
+                    {
+                        path: "payments",
+                        element: <AdminRoute><Payments></Payments></AdminRoute>
+                    },
+                    // Payment End---------------------------
+
+                    // Academic Documents Start--------------------
+                    {
+                        path: 'academic-docs-admin',
+                        element: <AdminRoute><AcademicDocs></AcademicDocs></AdminRoute>
+                    },
+                    // Academic Documents End--------------------
 
                     // -----------------------------Admin End-------------------------------------
                 ]
@@ -283,6 +307,41 @@ const router = createBrowserRouter([
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/form-fillUp-data-count`)
             },
 
+            // ------------------------------Form FillUp Time-----------------------
+            {
+                path: 'form-fill-up-time',
+                element: <AdminRoute><FormFillUpTime></FormFillUpTime></AdminRoute>
+            },
+            // -----------------------------Application Time Control----------------------------------
+            {
+                path: 'application-time-control',
+                element: <AdminRoute> <ApplicationTimeControl></ApplicationTimeControl></AdminRoute>
+            },
+            // -----------------------------All Payment----------------------------------
+            {
+                path: 'all-payment',
+                element: <AdminRoute><AllPayment></AllPayment></AdminRoute>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/payments-data-count`)
+            },
+            // -----------------------------All Transcript----------------------------------
+            {
+                path: 'all-transcript-admin',
+                element: <AdminRoute><AllTranscriptAdmin></AllTranscriptAdmin></AdminRoute>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/transcripts-data-count`)
+            },
+            // -----------------------------All Testimonial----------------------------------
+            {
+                path: 'all-testimonial-admin',
+                element: <AdminRoute><AllTestimonialAdmin></AllTestimonialAdmin></AdminRoute>,
+                // loader: () => fetch(`${import.meta.env.VITE_API_URL}/payments-data-count`)
+            },
+            // -----------------------------All Certificate----------------------------------
+            {
+                path: 'all-certificate-admin',
+                element: <AdminRoute><AllCertificateAdmin></AllCertificateAdmin></AdminRoute>,
+                // loader: () => fetch(`${import.meta.env.VITE_API_URL}/payments-data-count`)
+            },
+
         ]
     },
 
@@ -337,8 +396,10 @@ const router = createBrowserRouter([
     // Admit Card
     {
         path: 'admit-card/:id',
-        element: <AdmitCard></AdmitCard>
-    }
+        element: <StudentPrivateRoute><AdmitCard></AdmitCard></StudentPrivateRoute>
+    },
+
+
 ]);
 export default router
 
