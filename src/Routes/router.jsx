@@ -68,6 +68,7 @@ import AcademicDocs from "../pages/Dashboard/AdminDashboard/AdminSidebar/Academi
 import AllTranscriptAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/AcademicDocs/AllTranscriptAdmin/AllTranscriptAdmin";
 import AllTestimonialAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/AcademicDocs/AllTestimonialAdmin/AllTestimonialAdmin";
 import AllCertificateAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/AcademicDocs/AllCertificateAdmin/AllCertificateAdmin";
+import CertificateCopy from "../pages/Dashboard/StudentDashboard/AcademicDocReq/Docs/Certificate/CertificateCopy/CertificateCopy";
 
 
 
@@ -333,13 +334,13 @@ const router = createBrowserRouter([
             {
                 path: 'all-testimonial-admin',
                 element: <AdminRoute><AllTestimonialAdmin></AllTestimonialAdmin></AdminRoute>,
-                // loader: () => fetch(`${import.meta.env.VITE_API_URL}/payments-data-count`)
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/testimonials-data-count`)
             },
             // -----------------------------All Certificate----------------------------------
             {
                 path: 'all-certificate-admin',
                 element: <AdminRoute><AllCertificateAdmin></AllCertificateAdmin></AdminRoute>,
-                // loader: () => fetch(`${import.meta.env.VITE_API_URL}/payments-data-count`)
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/certificates-data-count`)
             },
 
         ]
@@ -397,6 +398,11 @@ const router = createBrowserRouter([
     {
         path: 'admit-card/:id',
         element: <StudentPrivateRoute><AdmitCard></AdmitCard></StudentPrivateRoute>
+    },
+    // Certificate Copy
+    {
+        path: 'certificate-copy/:id',
+        element: <StudentPrivateRoute><CertificateCopy></CertificateCopy></StudentPrivateRoute>
     },
 
 

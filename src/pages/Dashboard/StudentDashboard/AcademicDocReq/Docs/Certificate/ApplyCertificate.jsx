@@ -14,7 +14,7 @@ const ApplyCertificate = () => {
     const navigate = useNavigate()
     const { user } = useAuth()
 
-    const { name_en, guardian, dob, nationality, address, admission_info, registration_no, academic, class_roll } = studentInfo || {}
+    const { name_en, guardian, dob, nationality, address, admission_info, registration_no, academic, class_roll, profile_image } = studentInfo || {}
 
     const handleDocs = async (e) => {
         e.preventDefault()
@@ -48,6 +48,7 @@ const ApplyCertificate = () => {
 
 
         const applyDocsInfo = {
+            profile: profile_image,
             email: user?.email,
             student_name: name,
             father_name,
@@ -83,10 +84,10 @@ const ApplyCertificate = () => {
                 </div>
                 <ul className='list-disc pl-6 pt-3'>
                     <li>
-                       সনদ হারিয়ে গেলে সংশ্লিষ্ট থানায় জিডি করতে হবে এবং জিডি নম্বর উল্লেখ করে জাতীয় পত্রিকায় বিজ্ঞাপন দিতে হবে। সনদ সংগ্রহের সময় জিডি এবং পত্রিকার কপি অবশ্যই জমা দিতে হবে।
+                        সনদ হারিয়ে গেলে সংশ্লিষ্ট থানায় জিডি করতে হবে এবং জিডি নম্বর উল্লেখ করে জাতীয় পত্রিকায় বিজ্ঞাপন দিতে হবে। সনদ সংগ্রহের সময় জিডি এবং পত্রিকার কপি অবশ্যই জমা দিতে হবে।
                     </li>
                     <li>
-                       সনদ নষ্ট হয়ে গেলে বা কোন তথ্যের পরিবর্তন হলে সনদ সংগ্রহের সময় আগের সনদ অবশ্যই জমা দিতে হবে।
+                        সনদ নষ্ট হয়ে গেলে বা কোন তথ্যের পরিবর্তন হলে সনদ সংগ্রহের সময় আগের সনদ অবশ্যই জমা দিতে হবে।
                     </li>
                     <li>
                         ধাপ ১: অনলাইন পেমেন্ট। ধাপ ২): ট্রানজেকশন আইডি দিয়ে আবেদন। ধাপ ৩): প্রযোজ্য ক্ষেত্রে পোস্টিং ও ভর্তি শাখার ছাড়পত্র গ্রহণ। ধাপ ৪): আবেদনপত্রের প্রিন্টকপি প্রশাসনিক অফিসে জমা প্রদান। ধাপ ৫): নির্দিষ্ট দিনে পরীক্ষা নিয়ন্ত্রকের অফিস থেকে সনদ/নম্বরপত্র সংগ্রহ।

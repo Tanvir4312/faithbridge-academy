@@ -19,7 +19,7 @@ const TranscriptAdmin = ({ transcript, refetch }) => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    await axiosSecure.patch(`/transcripts-data-update/${id}`)
+                    await axiosSecure.patch(`/academic-docs-update/${id}`)
 
                     refetch()
                 } catch (err) {
@@ -50,7 +50,7 @@ const TranscriptAdmin = ({ transcript, refetch }) => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    await axiosSecure.delete(`/transcripts-data-delete/${id}`)
+                    await axiosSecure.delete(`/academic-docs-delete/${id}`)
 
                     refetch()
                 } catch (err) {
@@ -77,8 +77,12 @@ const TranscriptAdmin = ({ transcript, refetch }) => {
                 <p><span className='text-lg font-medium'>status:</span><span className={`font-bold ${status === 'pending' ? 'text-red-500' : 'text-green-500'}`}> {status}</span></p>
                 <p><span className='text-lg font-medium'>Type:</span><span className='text-xl font-bold'> {type}</span></p>
                 <p><span className='text-lg font-medium'>email:</span> {email}</p>
-                <img className='w-40 h-40 mt-4' src={identity_doc_img} alt="" />
+                <div className='flex gap-5'>
+                    <p>NID/Passport Copy/Birth Certificate:</p>
+                     <img className='w-40 h-40 mt-4' src={identity_doc_img} alt="" />
 
+                </div>
+               
                 <div className='flex items-center justify-between'>
                     <button onClick={() => handleAccept(_id)} className="btn bg-blue-500 mt-4 text-white">Accept</button>
                     <button onClick={() => handleDelete(_id)} className="btn bg-red-500 mt-4 text-white">Delete</button>

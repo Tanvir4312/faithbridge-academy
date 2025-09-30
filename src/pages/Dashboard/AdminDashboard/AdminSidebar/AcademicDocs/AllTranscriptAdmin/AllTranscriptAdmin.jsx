@@ -17,11 +17,12 @@ const AllTranscriptAdmin = () => {
     const { data: allTranscript = [], refetch } = useQuery({
         queryKey: ['all-transcript'],
         queryFn: async () => {
-            const { data } = await axiosSecure.get('all-transcript-get-admin')
+            const { data } = await axiosSecure.get('academic-docs-get-admin')
             setTranscripts(data)
             return allTranscript
         }
     })
+   
     // Pagination
     const numberOfPages = Math.ceil(count / itemPerPage)
     const pages = [...Array(numberOfPages).keys()]

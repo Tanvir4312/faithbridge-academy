@@ -222,8 +222,10 @@ const ApplyForm = () => {
                         <div className='grid grid-cols-1 md:grid-cols-3 gap-3 px-5'>
 
                             <input value={user?.email} type="email" name="email" className="input" onChange={handleChange} />
-
-                            <input type="file" name='profile_image' className="file-input" />
+                            <fieldset className="fieldset">
+                                <legend className="fieldset-legend">Profile Image</legend>
+                                <input type="file" name='profile_image' className="file-input" placeholder='hf'/>
+                            </fieldset>
                             <input type="text" name="name_bn" placeholder="নাম (বাংলা)**" className="input" required onChange={handleChange} />
 
                             <input type="text" name="name_en" placeholder="Name (English)**" className="input" required onChange={handleChange} />
