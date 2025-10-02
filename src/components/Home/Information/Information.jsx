@@ -35,7 +35,7 @@ const Information = ({ numbers }) => {
           </div>
 
           {/* Contact (Office) */}
-          <h1 className='heading text-3xl font-bold text-[#005842] pb-2 mt-5 text-center'>Contact (Office)</h1>
+          <h1 id='contact' className='heading text-3xl font-bold text-[#005842] pb-2 mt-5 text-center'>Contact (Office)</h1>
           <hr />
           <div className='flex flex-wrap gap-4'>
             {

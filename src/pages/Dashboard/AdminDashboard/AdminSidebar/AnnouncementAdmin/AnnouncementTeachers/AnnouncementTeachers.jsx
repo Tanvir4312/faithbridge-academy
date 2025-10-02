@@ -1,0 +1,14 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+const AnnouncementTeachers = () => {
+    return (
+     
+        <div className='md:flex gap-5 mt-5'>
+            <Link to={'/admin_layout/add-ann-teacher'}><button className="btn mb-5 md:mb-0">Add Announcements</button></Link>
+            <Link to={'/admin_layout/view-ann-teacher'}><button className="btn">View Announcements</button></Link>
+        </div>
+    )
+}
+
+export default AnnouncementTeachers

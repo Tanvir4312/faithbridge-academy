@@ -22,7 +22,7 @@ const Navbar = () => {
     }, [])
 
     return (
-        <div className={`bg-[#4cfcd3] w-full z-50  ${isFixed ? 'transition-all duration-300 fixed top-0 opacity-80 text-white font-bold' : 'relative'}`}>
+        <div className={`bg-[#4cfcd3] w-full z-50  ${isFixed ? 'transition-all duration-100 fixed top-0 opacity-90 text-white font-bold' : 'relative'}`}>
             <div className='navbar max-w-6xl mx-auto'>
                 <div className="mx-auto md:mx-0">
 
@@ -140,14 +140,14 @@ const Navbar = () => {
                                 <div tabIndex={0} role="button" className="btn btn-ghost group-hover:bg-[#006E51]">Media</div>
                                 <ul tabIndex={0} style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-40 p-2 shadow-sm absolute top-4 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                     <Link><li className='hover:text-red-300'>Photo Gallery</li></Link>
-                               <Link><li className='hover:text-red-300'>Video Gallery</li></Link>
+                                    <Link><li className='hover:text-red-300'>Video Gallery</li></Link>
                                 </ul>
                             </div>
                             {/* Contact */}
                             <div className="dropdown dropdown-hover relative group ">
                                 <div tabIndex={0} role="button" className="btn btn-ghost group-hover:bg-[#006E51]">Contact</div>
                                 <ul tabIndex={0} style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-40 p-2 shadow-sm absolute top-4 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-2">
-                                 <Link><li className='hover:text-red-300'>Contact</li></Link>
+                                    <Link><li className='hover:text-red-300'>Contact</li></Link>
                                 </ul>
                             </div>
                             {/* Login */}
@@ -158,7 +158,14 @@ const Navbar = () => {
                                 </ul>
                             </div>
 
+                            <div className='lg:hidden'>
+                                {
+                                    user && <Link to={'/dashboard'}> <p className='bg-amber-300 px-4 py-2 text-emerald-400 font-bold rounded cursor-pointer flex gap-2'><img className='w-6' src="https://img.icons8.com/?size=160&id=6xRZJrVWQLNn&format=png" alt="" />Dashboard</p></Link>
+                                }
+                            </div>
+
                         </ul>
+
                     </div>
 
                 </div>
@@ -172,7 +179,7 @@ const Navbar = () => {
                     <div className="">
                         <div className="relative group">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">About<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                 <Link><li className='hover:text-red-300'>School at a Glance</li></Link>
                                 <Link><li className='hover:text-red-300'>Complex</li></Link>
                                 <Link> <li className='hover:text-red-300'>Principal's Message</li></Link>
@@ -191,7 +198,7 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Academics<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                 <Link><li className='hover:text-red-300'>Our Curriculum</li></Link>
                                 <Link><li className='hover:text-red-300'>Co-Curriculum Activities</li></Link>
                                 <Link><li className='hover:text-red-300'>Class-wise Teacher List</li></Link>
@@ -209,7 +216,7 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Admission<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                 <Link><li className='hover:text-red-300'>Admission Notice</li></Link>
                                 <Link><li className='hover:text-red-300'>Examination Rules</li></Link>
                                 <Link><li className='hover:text-red-300'>Admission Procedure</li></Link>
@@ -225,7 +232,7 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Accommodation <TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                 <Link><li className='hover:text-red-300'>Hostel Overview</li></Link>
                                 <Link><li className='hover:text-red-300'>Residential Halls & Administration</li></Link>
                                 <Link><li className='hover:text-red-300'>Hostel Fees</li></Link>
@@ -239,7 +246,7 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Publications<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                 <Link><li className='hover:text-red-300'>Annual Activities</li></Link>
                                 <Link><li className='hover:text-red-300'>Monthly Publications</li></Link>
                                 <Link><li className='hover:text-red-300'>Quarterly FaithBridge</li></Link>
@@ -257,7 +264,7 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Library<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                 <Link><li className='hover:text-red-300'>Library Overview</li></Link>
                                 <Link><li className='hover:text-red-300'>Library Catalog</li></Link>
                                 <Link><li className='hover:text-red-300'>Library Policies</li></Link>
@@ -269,7 +276,7 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Laboratory<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                 <Link><li className='hover:text-red-300'>Laboratory Overview</li></Link>
                                 <Link><li className='hover:text-red-300'>Laboratory Activities</li></Link>
                                 <Link><li className='hover:text-red-300'>Laboratory Rules & Regulations</li></Link>
@@ -281,7 +288,7 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Facilities<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                 <Link><li className='hover:text-red-300'>Teacher Training</li></Link>
                                 <Link><li className='hover:text-red-300'>Foundation Course</li></Link>
                                 <Link><li className='hover:text-red-300'>Language Learning Course</li></Link>
@@ -294,9 +301,9 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Media<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
-                               <Link><li className='hover:text-red-300'>Photo Gallery</li></Link>
-                               <Link><li className='hover:text-red-300'>Video Gallery</li></Link>
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                                <Link><li className='hover:text-red-300'>Photo Gallery</li></Link>
+                                <Link><li className='hover:text-red-300'>Video Gallery</li></Link>
                             </ul>
                         </div>
                     </ul>
@@ -304,8 +311,8 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Contact<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
-                              <Link><li className='hover:text-red-300'>Contact</li></Link>
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[200px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                               <a href="#contact"> <li className='hover:text-red-300'>Contact</li></a>
 
                             </ul>
                         </div>
@@ -314,9 +321,9 @@ const Navbar = () => {
                     <ul className="">
                         <div className=" relative group dropdown-hover">
                             <div className="flex items-end text-xl group-hover:text-[#FAF3E0] cursor-pointer button-text">Login<TiArrowSortedDown /></div>
-                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[165px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 text-white text-[16px] font-bold cursor-pointer space-y-3">
+                            <ul style={{ backgroundImage: `url(${NavbarLogo})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="dropdown-content menu rounded-box z-20 w-[165px] p-2 shadow-sm absolute top-12 left-0 transition-all duration-400 ease-in-out translate-y-5 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-90 text-white text-[16px] font-bold cursor-pointer space-y-3">
                                 <li><Link to={'/login'}><button className='text-white button-text font-medium cursor-pointer hover:text-amber-600'>Login</button></Link></li>
-                               
+
 
 
                             </ul>

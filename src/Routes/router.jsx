@@ -43,7 +43,6 @@ import CoursesForStudent from "../pages/Dashboard/AdminDashboard/CoursesForStude
 import AddCourses from "../pages/Dashboard/AdminDashboard/CoursesForStudent/AddCourses/AddCourses";
 import ViewCourses from "../pages/Dashboard/AdminDashboard/CoursesForStudent/ViewCourses/ViewCourses";
 import CourseDetails from "../pages/CourseDetails/CourseDetails";
-
 import AddActivities from "../pages/Dashboard/AdminDashboard/OtherActivities/AddActivities/AddActivities";
 import ViewActivities from "../pages/Dashboard/AdminDashboard/OtherActivities/ViewActivities/ViewActivities";
 import OthersActivities from "../pages/Dashboard/AdminDashboard/OtherActivities/OthersActivities";
@@ -69,6 +68,16 @@ import AllTranscriptAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/A
 import AllTestimonialAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/AcademicDocs/AllTestimonialAdmin/AllTestimonialAdmin";
 import AllCertificateAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/AcademicDocs/AllCertificateAdmin/AllCertificateAdmin";
 import CertificateCopy from "../pages/Dashboard/StudentDashboard/AcademicDocReq/Docs/Certificate/CertificateCopy/CertificateCopy";
+import Announcements from "../pages/Dashboard/StudentDashboard/Announcements/Announcements";
+import AnnouncementAdmin from "../pages/Dashboard/AdminDashboard/AdminSidebar/AnnouncementAdmin/AnnouncementAdmin";
+import AnnouncementTeachers from "../pages/Dashboard/AdminDashboard/AdminSidebar/AnnouncementAdmin/AnnouncementTeachers/AnnouncementTeachers";
+import AnnouncementsStudents from "../pages/Dashboard/AdminDashboard/AdminSidebar/AnnouncementAdmin/AnnouncementsStudents/AnnouncementsStudents";
+import AddAnnouncementStu from "../pages/Dashboard/AdminDashboard/AdminSidebar/AnnouncementAdmin/AnnouncementsStudents/AddAnnouncementStu";
+import ViewAnnouncementsStu from "../pages/Dashboard/AdminDashboard/AdminSidebar/AnnouncementAdmin/AnnouncementsStudents/ViewAnnouncementsStu";
+import AddAnnouncementsTeacher from "../pages/Dashboard/AdminDashboard/AdminSidebar/AnnouncementAdmin/AnnouncementTeachers/AddAnnouncementsTeacher";
+import ViewAnnouncementsTeacher from "../pages/Dashboard/AdminDashboard/AdminSidebar/AnnouncementAdmin/AnnouncementTeachers/ViewAnnouncementsTeacher";
+import ShowAnnouncement from "../pages/Dashboard/StudentDashboard/Announcements/ShowAnnouncement/ShowAnnouncement";
+
 
 
 
@@ -106,6 +115,10 @@ const router = createBrowserRouter([
                     {
                         path: 'academic-doc-req',
                         element: <PrivateRoute><StudentPrivateRoute><AcademicDocReq></AcademicDocReq></StudentPrivateRoute></PrivateRoute>
+                    },
+                    {
+                        path: 'announcements',
+                        element: <PrivateRoute><StudentPrivateRoute><Announcements /></StudentPrivateRoute></PrivateRoute>
                     },
                     // Transcript-------------------------
                     {
@@ -217,6 +230,24 @@ const router = createBrowserRouter([
                         element: <AdminRoute><AcademicDocs></AcademicDocs></AdminRoute>
                     },
                     // Academic Documents End--------------------
+
+                    // Announcements Start-------------------
+                    {
+                        path: 'announcements-admin',
+                        element: <AdminRoute><AnnouncementAdmin></AnnouncementAdmin></AdminRoute>
+                    },
+                    {
+                        path: 'announcement-students',
+                        element: <AdminRoute><AnnouncementsStudents /></AdminRoute>,
+
+                    },
+                    {
+                        path: 'announcement-teachers',
+                        element: <AdminRoute><AnnouncementTeachers /></AdminRoute>,
+
+                    },
+
+                    // Announcements End-------------------
 
                     // -----------------------------Admin End-------------------------------------
                 ]
@@ -342,6 +373,30 @@ const router = createBrowserRouter([
                 element: <AdminRoute><AllCertificateAdmin></AllCertificateAdmin></AdminRoute>,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/certificates-data-count`)
             },
+            // -----------------------------Announcements----------------------------------
+        
+            // For Students
+            {
+                path: 'add-ann-stu',
+                element: <AdminRoute><AddAnnouncementStu/></AdminRoute>,
+
+            },
+            {
+                path: 'view-ann-stu',
+                element: <AdminRoute><ViewAnnouncementsStu/></AdminRoute>,
+
+            },
+            // For Students
+            {
+                path: 'add-ann-teacher',
+                element: <AdminRoute><AddAnnouncementsTeacher/></AdminRoute>,
+
+            },
+            {
+                path: 'view-ann-teacher',
+                element: <AdminRoute><ViewAnnouncementsTeacher/></AdminRoute>,
+
+            },
 
         ]
     },
@@ -403,6 +458,11 @@ const router = createBrowserRouter([
     {
         path: 'certificate-copy/:id',
         element: <StudentPrivateRoute><CertificateCopy></CertificateCopy></StudentPrivateRoute>
+    },
+    // Show Announcements
+    {
+        path: 'show-announcements/:id',
+        element: <StudentPrivateRoute><ShowAnnouncement/></StudentPrivateRoute>
     },
 
 

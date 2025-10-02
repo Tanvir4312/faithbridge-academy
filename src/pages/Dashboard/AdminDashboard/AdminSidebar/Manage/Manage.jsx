@@ -9,6 +9,7 @@ const Manage = () => {
             <Link to={'/admin_layout/student-formFillUp-info-admin'}><button className="btn w-full">Student Form fill-up Info</button></Link>
             <Link to={'/admin_layout/form-fill-up-time'}><button className="btn w-full">Form fill-up Time</button></Link>
             <Link to={'/admin_layout/application-time-control'}><button className="btn w-full">Application Time Control</button></Link>
+        
       
 
         </div>

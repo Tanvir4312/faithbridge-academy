@@ -52,18 +52,15 @@ const StudentSidebar = ({role}) => {
 
                 {/* Class Routine */}
                 <div>
-                    <NavLink className={({ isActive }) => isActive ? 'bg-[#FFD54F] md:py-4 py-2 rounded text-[#333333] font-medium' : ''} to={'announcements'}><button className='lg:w-72 md:w-60 w-[117px] lg:text-3xl md:text-xl text-sm cursor-pointer'>Class Routine</button></NavLink>
+                    <NavLink className={({ isActive }) => isActive ? 'bg-[#FFD54F] md:py-4 py-2 rounded text-[#333333] font-medium' : ''} to={'Routine'}><button className='lg:w-72 md:w-60 w-[117px] lg:text-3xl md:text-xl text-sm cursor-pointer'>Class Routine</button></NavLink>
                 </div>
 
-                {/* View Homework */}
-                <div>
-                    <NavLink className={({ isActive }) => isActive ? 'bg-[#FFD54F] md:py-4 py-2 rounded text-[#333333] font-medium' : ''} to={'announcements'}><button className='lg:w-72 md:w-60 w-[117px] lg:text-3xl md:text-xl text-sm cursor-pointer'>View Homework</button></NavLink>
-                </div>
+              
 
 
                 {/* Contact School */}
                 <div>
-                    <NavLink className={({ isActive }) => isActive ? 'bg-[#FFD54F] md:py-4 py-2 rounded text-[#333333] font-medium' : ''} to={'announcements'}><button className='lg:w-72 md:w-60 w-[117px] lg:text-3xl md:text-xl text-sm cursor-pointer'>Contact School</button></NavLink>
+                    <NavLink className={({ isActive }) => isActive ? 'bg-[#FFD54F] md:py-4 py-2 rounded text-[#333333] font-medium' : ''} to={'Contact'}><button className='lg:w-72 md:w-60 w-[117px] lg:text-3xl md:text-xl text-sm cursor-pointer'>Contact School</button></NavLink>
                 </div>
                 <div className="divider"></div>
 
