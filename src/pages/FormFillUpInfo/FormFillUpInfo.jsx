@@ -14,14 +14,14 @@ const FormFillUpInfo = () => {
 
     const { class: student_class, class_roll, examination_name, examination_year, status, payment, _id } = formFillUpInfo || {}
 
-    console.log(formFillUpInfo)
+  
 
     useEffect(() => {
         if (formFillUpInfo) {
             return setLoading(false)
         }
     }, [formFillUpInfo])
-console.log(formFillUpInfo)
+
     return (
 
         <div>

@@ -18,7 +18,7 @@ const CertificateCopy = () => {
         }
         fetchData()
     }, [axiosSecure, id])
-    console.log(certificateApplyCopy)
+ 
     return (
         <div className='max-w-5xl mx-auto my-5'>
             <div className='border p-6'>

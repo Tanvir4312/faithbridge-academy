@@ -32,6 +32,9 @@ const AdminSidebar = () => {
                 <div>
                     <NavLink className={({ isActive }) => isActive ? 'bg-[#FFD54F] md:py-4 py-2 rounded text-[#333333] font-medium' : ''} to={'announcements-admin'}><button className='lg:w-72 md:w-60 w-[117px] lg:text-3xl md:text-xl text-sm cursor-pointer'>Announcements</button></NavLink>
                 </div>
+                <div>
+                    <NavLink className={({ isActive }) => isActive ? 'bg-[#FFD54F] md:py-4 py-2 rounded text-[#333333] font-medium' : ''} to={'class-routine-manage'}><button className='lg:w-72 md:w-60 w-[117px] lg:text-3xl md:text-xl text-sm cursor-pointer'>Class Routine</button></NavLink>
+                </div>
             
             </div>
             <div className='flex flex-col items-center'>

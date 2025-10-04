@@ -77,6 +77,11 @@ import ViewAnnouncementsStu from "../pages/Dashboard/AdminDashboard/AdminSidebar
 import AddAnnouncementsTeacher from "../pages/Dashboard/AdminDashboard/AdminSidebar/AnnouncementAdmin/AnnouncementTeachers/AddAnnouncementsTeacher";
 import ViewAnnouncementsTeacher from "../pages/Dashboard/AdminDashboard/AdminSidebar/AnnouncementAdmin/AnnouncementTeachers/ViewAnnouncementsTeacher";
 import ShowAnnouncement from "../pages/Dashboard/StudentDashboard/Announcements/ShowAnnouncement/ShowAnnouncement";
+import ClassRoutine from "../pages/Dashboard/StudentDashboard/ClassRoutine/ClassRoutine";
+import ClassRoutineManage from "../pages/Dashboard/AdminDashboard/AdminSidebar/ClassRoutineManage/ClassRoutineManage";
+import AddClassRoutine from "../pages/Dashboard/AdminDashboard/AdminSidebar/ClassRoutineManage/AddClassRoutine/AddClassRoutine";
+import ViewClassRoutine from "../pages/Dashboard/AdminDashboard/AdminSidebar/ClassRoutineManage/ViewClassRoutine/ViewClassRoutine";
+import UpdateRoutine from "../pages/Dashboard/AdminDashboard/AdminSidebar/ClassRoutineManage/ViewClassRoutine/UpdateRoutine/UpdateRoutine";
 
 
 
@@ -162,6 +167,8 @@ const router = createBrowserRouter([
                         path: 'all-certificate-application',
                         element: <PrivateRoute><StudentPrivateRoute><AllCertificate></AllCertificate></StudentPrivateRoute></PrivateRoute>
                     },
+
+
                     //------------------------------User or Student End----------------------------
 
 
@@ -249,6 +256,14 @@ const router = createBrowserRouter([
 
                     // Announcements End-------------------
 
+                    // Class Routine Start-------------------
+                    {
+                        path: 'class-routine-manage',
+                        element: <AdminRoute><ClassRoutineManage /></AdminRoute>,
+
+                    },
+                    // Class Routine End-------------------
+
                     // -----------------------------Admin End-------------------------------------
                 ]
             }
@@ -256,7 +271,7 @@ const router = createBrowserRouter([
         ],
     },
 
-    // Admin Layout
+    // Admin Layout Start-------------------------------------------
     {
         path: 'admin_layout',
         element: <AdminRoute><AdminLayout></AdminLayout></AdminRoute>,
@@ -374,33 +389,54 @@ const router = createBrowserRouter([
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/certificates-data-count`)
             },
             // -----------------------------Announcements----------------------------------
-        
+
             // For Students
             {
                 path: 'add-ann-stu',
-                element: <AdminRoute><AddAnnouncementStu/></AdminRoute>,
+                element: <AdminRoute><AddAnnouncementStu /></AdminRoute>,
 
             },
             {
                 path: 'view-ann-stu',
-                element: <AdminRoute><ViewAnnouncementsStu/></AdminRoute>,
+                element: <AdminRoute><ViewAnnouncementsStu /></AdminRoute>,
 
             },
             // For Students
             {
                 path: 'add-ann-teacher',
-                element: <AdminRoute><AddAnnouncementsTeacher/></AdminRoute>,
+                element: <AdminRoute><AddAnnouncementsTeacher /></AdminRoute>,
 
             },
             {
                 path: 'view-ann-teacher',
-                element: <AdminRoute><ViewAnnouncementsTeacher/></AdminRoute>,
+                element: <AdminRoute><ViewAnnouncementsTeacher /></AdminRoute>,
 
             },
 
+            // Class Routine Related
+            // Add Class Routine-----
+            {
+                path: 'add-class-routine',
+                element: <AdminRoute><AddClassRoutine /></AdminRoute>,
+
+            },
+            // View Class Routine-----
+            {
+                path: 'view-class-routine',
+                element: <AdminRoute><ViewClassRoutine /></AdminRoute>,
+
+            },
+            // View Class Routine-----
+            {
+                path: 'update-routine/:id',
+                element: <AdminRoute><UpdateRoutine/></AdminRoute>,
+
+            },
+
+
         ]
     },
-
+    // Admin Layout End-------------------------------------------
 
 
     {
@@ -462,9 +498,13 @@ const router = createBrowserRouter([
     // Show Announcements
     {
         path: 'show-announcements/:id',
-        element: <StudentPrivateRoute><ShowAnnouncement/></StudentPrivateRoute>
+        element: <StudentPrivateRoute><ShowAnnouncement /></StudentPrivateRoute>
     },
-
+    // Class Routine
+    {
+        path: 'class-routine',
+        element: <PrivateRoute><StudentPrivateRoute><ClassRoutine /></StudentPrivateRoute></PrivateRoute>
+    },
 
 ]);
 export default router

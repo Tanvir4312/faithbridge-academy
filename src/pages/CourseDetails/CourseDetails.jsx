@@ -20,7 +20,7 @@ const CourseDetails = () => {
   }, [axiosPublic, id])
 
 
-  console.log(courseDetails)
+  
 
   const link = <>
     <Link to={'/'}><li className='text-lg font-bold md:text-white'><button><img className='w-6' src="https://img.icons8.com/?size=100&id=24629&format=png" alt="" /> Home</button></li></Link>

@@ -8,7 +8,7 @@ const ApplyPayment = () => {
 
     const text = searchParams.get('text')
 
-// console.log(text)
+
     const handleStripe = () => {
         setClick(false)
     }

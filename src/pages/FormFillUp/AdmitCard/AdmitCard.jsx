@@ -20,7 +20,7 @@ const AdmitCard = () => {
         }
         fetchAdmitCardInfo()
     }, [axiosSecure, id])
-    console.log(admitCardData)
+   
     const { name_en, name_bn, class_roll, class: student_class, examination_name, father_name, mother_name, examination_year, registration_no, group, image, signature } = admitCardData || {}
 
 

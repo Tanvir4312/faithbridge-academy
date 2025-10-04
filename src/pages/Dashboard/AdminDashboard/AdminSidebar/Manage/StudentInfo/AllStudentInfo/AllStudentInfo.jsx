@@ -59,7 +59,7 @@ const AllStudentInfo = () => {
         }
         fetchPaginationData()
     }, [axiosSecure, currentPage, itemPerPage])
-    console.log(studentsInfo)
+
     return (
         <div className='max-w-6xl mx-auto'>
             <div className='text-center mt-4 md:flex items-center gap-3'>

@@ -213,13 +213,15 @@ const FormFillUpField = () => {
                             <option value={8}>Class - 8</option>
                             <option value={9}>Class - 9</option>
                             <option value={10}>Class - 10</option>
+                            <option value={11}>Class - 11</option>
+                            <option value={12}>Class - 12</option>
 
                         </select>
                     </fieldset>
                     {/* Group */}
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">Group**</legend>
-                        <select disabled={!['9', '10', '11'].includes(classValue)} required name='group' defaultValue="Group" className="select">
+                        <select disabled={!['9', '10', '11', '12'].includes(classValue)} required name='group' defaultValue="Group" className="select">
                             <option disabled={true}>Group</option>
                             <option value={"Arts"}>Arts</option>
                             <option value={'Science'}>Science</option>

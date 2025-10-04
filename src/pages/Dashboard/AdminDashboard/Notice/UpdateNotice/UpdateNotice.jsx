@@ -29,7 +29,7 @@ const UpdateNotice = () => {
             notice_title: title,
             notice_details: details
         }
-        console.log(update_notice)
+    
 
         await axiosSecure.patch(`/notice-update/${id}`, update_notice)
         navigate('/admin_layout/view-notice')

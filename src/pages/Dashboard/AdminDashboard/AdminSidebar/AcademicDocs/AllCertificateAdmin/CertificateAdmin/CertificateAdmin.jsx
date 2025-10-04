@@ -3,7 +3,7 @@ import useAxiosSecure from '../../../../../../../hooks/useAxiosSecure'
 import Swal from 'sweetalert2'
 
 const CertificateAdmin = ({certificate, refetch}) => {
-    console.log(certificate)
+   
       const axiosSecure = useAxiosSecure()
     const { registration_no, student_name, type, transactionId, identity_doc_img, status, email, _id } = certificate || {}
 

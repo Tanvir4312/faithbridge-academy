@@ -117,7 +117,7 @@ const AllUsers = () => {
 
 
     const handleSearch = async (value) => {
-        console.log(value)
+       
         const { data } = await axiosSecure.get(`/users-search?search=${value}`)
         setUsers(data)
     }
